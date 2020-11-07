@@ -20,7 +20,6 @@ h1 {
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(3, minmax(100px, 1fr));
-  /* align-content: center; */
 }
 .error-message {
   color: red;
@@ -37,6 +36,11 @@ h1 {
 .box:hover {
   background-color: purple;
 }
+
+.winner {
+  background-color: purple;
+  color: #fff;
+}
 button {
   padding: 1.5rem;
   background-color: purple;
@@ -48,6 +52,6 @@ button {
 
 @media (min-width: 640px) {
   main {
-    max-width: none;
+    max-width: 800px;
   }
 }

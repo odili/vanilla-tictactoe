@@ -27,14 +27,12 @@ let board = savedGame ? game[game.length - 1].board : Array(9).fill("");
 let lastPlayer = savedGame ? game[game.length - 1].player : "";
 let currentPlayer = getNextPlayer(lastPlayer);
 let winner = getWinner(board)
-let errorMessage;
 
 function newGame() {
   console.log('new game coming...')
   localStorage.clear();
   location.reload();
 }
-const nextMove = (play) => {};
 
 function getNextPlayer(lastPlayer) {
   if (lastPlayer === "") return "X";
@@ -48,7 +46,7 @@ function play(index) {
   if(winner) return;
   currentPlayer = getNextPlayer(lastPlayer);
   if (board[index]) {
-    console.log("this box is played already");
+    alert("this box is played already, chose another");
     return;
   }
   board[index] = currentPlayer;
@@ -64,16 +62,13 @@ ${winner && winner !== 'TIE' ? `<h3>Player ${winner} won !!!</h3>` : ''}
 ${!winner ? `<h3>Next Player ${currentPlayer}</h3>` : ''}
 `;
 
+let boardContent = "";
 
-
-
-let boardContainer = "";
 board.forEach((played, index) => {
-  boardContainer += `<div class="box" onclick="play(${index})">${played}</div>`;
-});
+  boardContent += `<div class="box ${(winner === played) ? 'winner' : ''}" onclick="play(${index})">${played}</div>`;});
+
 let noticeContent = `
 ${ winner ? `<button onclick="newGame()">new game</button>` : ''}
-${errorMessage ? `<p class="error-message">${errorMessage}</p>` : ''}
 `;
 
 function loadGame() {
@@ -81,7 +76,7 @@ function loadGame() {
   const stats = document.querySelector(".stats");
   const notice = document.querySelector(".notice");
   stats.innerHTML = statsContent;
-  board.innerHTML = boardContainer;
+  board.innerHTML = boardContent;
   notice.innerHTML = noticeContent;
 
 }

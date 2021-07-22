@@ -5,7 +5,8 @@
 main {
   text-align: center;
   padding: 1em;
-  max-width: 240px;
+  width: 600px;
+  max-width: 840px;
   margin: 0 auto;
 }
 h1 {
@@ -48,10 +49,4 @@ button {
   text-transform: uppercase;
   margin: 2rem 0;
   letter-spacing: 0.3rem;
-}
-
-@media (min-width: 640px) {
-  main {
-    max-width: 800px;
-  }
 }

@@ -21,7 +21,7 @@ function getWinner(board) {
 }
 
 let numberOfPlayers = 2;
-const savedGame = localStorage.getItem("saved-game");
+const savedGame = window.localStorage.getItem("saved-game");
 let game = savedGame ? JSON.parse(savedGame) : [];
 let board = savedGame ? game[game.length - 1].board : Array(9).fill("");
 let lastPlayer = savedGame ? game[game.length - 1].player : "";
@@ -30,8 +30,8 @@ let winner = getWinner(board)
 
 function newGame() {
   console.log('new game coming...')
-  localStorage.clear();
-  location.reload();
+  window.localStorage.clear();
+  window.location.reload();
 }
 
 function getNextPlayer(lastPlayer) {
@@ -51,8 +51,8 @@ function play(index) {
   }
   board[index] = currentPlayer;
   game.push({ board: [...board], player: currentPlayer });
-  localStorage.setItem("saved-game", JSON.stringify(game));
-  location.reload();
+  window.localStorage.setItem("saved-game", JSON.stringify(game));
+  window.location.reload();
 }
 
 const statsContent = `
